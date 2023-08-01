@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player design</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/c4254e24a8.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="music-player">
+            <nav>
+                <div class="circle">
+                    <i class="fa-solid fa-angle-left"></i>
+                </div>
+                <div class="circle">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+            </nav>
+            <img src="musicplayerimg.jpg" class="song-img">
+            <h1>Yungblood</h1>
+            <p>5 seconds of summer(5SOS)</p>
+            <audio controls id="song">
+                <source src="5 Seconds of Summer - Youngblood (Official Video).mp3" type="audio/mpeg">
+            </audio>
+            <input type="range"value="0" id="progress">
+
+            <div class="controls">
+                <div><i class="fa-solid fa-backward"></i></div>
+                <div><i class="fa-solid fa-play" id="ctrlIcon"></i></div>
+                <div><i class="fa-solid fa-forward"></i></div>
+            </div>
+        </div>
+    </div>
+<script>
+        let progress=document.getElementById("progress");
+        let song=document.getElementById("song");
+        let ctrlIcon=document.getElementById("ctrlIcon");
+
+        song.onloadedmetadata=function(){
+            progress.max=song.duration;
+            progress.value=song.currentTime;
+        }
+
+        function palypause(){
+            if(ctrlIcon.classlit.contains("fa-pause")){
+                song.pause();
+                ctrlIcon.classlist.remove("fa-pause");
+                ctrlIcon.classlist.remove("fa-play");
+            }
+            else{
+                song.play();
+                ctrlIcon.classlist.add("fa-pause");
+                ctrlIcon.classlist.remove("fa-play");
+            }
+        }
+</script>
+</body>
+</html>
